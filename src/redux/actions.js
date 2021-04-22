@@ -50,8 +50,8 @@ export function fetchCompanyDetails() {
     await axios
       .get("https://jsonplaceholder.typicode.com/users")
       .then((response) => {
-        dispatch(companyUser(response.data.data));
-        console.log("Inside fetchuserDetails=====>",response)
+        dispatch(companyUser(response.data));
+        console.log("Inside fetchCompanyDetails=====>",response.data)
       });
   };
 }

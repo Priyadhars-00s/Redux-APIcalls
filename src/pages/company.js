@@ -1,27 +1,28 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchCompanyDetails, logout } from "../redux/actions";
+import { companyUser, fetchCompanyDetails, logout } from "../redux/actions";
 import { Table, Button } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 
 class Company extends React.Component {
   state={
-    logout:false,
+    logout:true,
   }
+    
+  
   componentDidMount() {
     this.props.fetchCompanyDetails()
   }
-
+  
   render() {
-    if(this.state.logout){
-      this.props.logout()
-      return <Redirect to="/" />
-    }
-    console.log("companydetail->Props", this.props)
+    if (this.state.redirect) {
+      return <Redirect to="/company" />;
+    } 
+    
     return (
       <div>
         <div style={{padding:"2vh"}}>
-        <Button onClick={()=>{this.setState({logout: true})}}>logout</Button>
+        <Button onClick={data => companyUser(data)}>CompanyDetails</Button>
         </div>
         <Table
           striped
@@ -50,6 +51,7 @@ class Company extends React.Component {
               return (
                 <tbody key={data.id}>
                   <tr>
+                  <td>{data.id}</td>
                     <td>{data.name}</td>
                     <td>{data.username}</td>
                     <td>{data.email}</td>
@@ -64,14 +66,12 @@ class Company extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user.user,
-  users: state.user.users,
   company:state.user.company,
 });
 
 const mapDispatchToProps = {
   fetchCompanyDetails,
-  logout,
+
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Company);
