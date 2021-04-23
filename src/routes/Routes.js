@@ -7,6 +7,9 @@ import Company from '../pages/company'
 import DataTable from '../pages/DataGrid'
 import AntDesign from '../pages/AntDesign'
 import Booking from '../pages/Booking'
+import Hooks from '../pages/UseEffectHooks'
+import ContextHook from '../pages/ContextHook'
+import ExchangeRates from '../pages/Apollo'
 
 class Routes extends React.Component{
     render(){
@@ -17,7 +20,11 @@ class Routes extends React.Component{
                     <Route exact path="/user" component={Home} />
                     <Route exact path="/data" component={DataTable} />
                     <Route exact path="/ant" component={AntDesign} />
+                    <Route exact path="/company" component={Company} />
                     <Route exact path="/booking" component={Booking} />
+                    <Route exact path="/hooks" component={Hooks} />
+                    <Route exact path="/contexthook" component={ContextHook} />
+                    <Route exact path="/apollo" component={ExchangeRates} />
                      </Switch>
                 
             </Router>

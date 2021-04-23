@@ -1,15 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { companyUser, fetchCompanyDetails, logout } from "../redux/actions";
+import { companyUser, fetchCompanyDetails } from "../redux/actions";
 import { Table, Button } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 
 class Company extends React.Component {
-  state={
-    logout:true,
-  }
-    
-  
+  state = {
+    redirect: false,
+  }; 
   componentDidMount() {
     this.props.fetchCompanyDetails()
   }
