@@ -25,7 +25,7 @@ function Currency() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-
+    console.log("Test",data);
   return data.rates.map(({ currency, rate }) => (
     <div key={currency}>
       <p>
